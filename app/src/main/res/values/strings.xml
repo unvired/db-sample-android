@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Unvired DB Sample</string>
+    <string name="title_activity_startup">StartupActivity</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="contactDownloadSuccess">Contacts Downloaded.</string>
+    <string name="contactCreateSuccess">Contact created.</string>
+    <string name="invalidResponse">No valid response from server</string>
+
+    <!--Play service messages-->
+    <string name="playServiceError">Google Play Service Error</string>
+    <string name="update">Update</string>
+    <string name="install">Install</string>
+    <string name="installPlayService">Chyme needs Google Play Services to work properly. Please install latest version of Play Services. </string>
+    <string name="updatePlayService">Google Play Services installed on this device is outdated for Chyme to run. Please update to latest version</string>
+    <string name="errorPlayService">Something wrong with Google Play Services. Please enable/check. </string>
+    <string name="notConnected">Not connected</string>
+    <string name="actionsNotEnabled">No action is enabled for you on this alert,please contact your administrator.</string>
+
+    <string name="title_activity_home">@string/app_name</string>
+    <string name="title_activity_create_contact">Add/Create Contact</string>
+    <string name="title_activity_get_contact">Get Contacts</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>
