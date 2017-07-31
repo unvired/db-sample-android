@@ -4,6 +4,7 @@ import com.unvired.core.ApplicationManager;
 import com.unvired.database.DBException;
 import com.unvired.database.IDataManager;
 import com.unvired.database.IDataStructure;
+import com.unvired.logger.Logger;
 import com.unvired.sample.db.be.CONTACT_HEADER;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class DBHelper {
         try {
             iDataManager = ApplicationManager.getInstance().getDataManager();
         } catch (DBException e) {
-            e.printStackTrace();
+            Logger.e(e.getMessage());
         }
     }
 
@@ -40,7 +41,7 @@ public class DBHelper {
         try {
             iDataManager.insertOrUpdateBasedOnGID(header);
         } catch (DBException e) {
-            e.printStackTrace();
+            Logger.e(e.getMessage());
         }
     }
 
@@ -57,7 +58,7 @@ public class DBHelper {
                 }
             }
         } catch (DBException e) {
-            e.printStackTrace();
+            Logger.e(e.getMessage());
             return null;
         }
 

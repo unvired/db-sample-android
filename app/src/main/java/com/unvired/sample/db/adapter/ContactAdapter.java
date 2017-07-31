@@ -40,7 +40,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         if (contactHeader != null) {
             if (MODE == Constants.MODE_GET) {
                 viewHolder.name.setText(contactHeader.getContactName());
-                viewHolder.ph.setText(contactHeader.getContactId().toString());
+                viewHolder.ph.setText(String.valueOf(contactHeader.getContactId()));
                 viewHolder.email.setVisibility(View.GONE);
             } else {
                 viewHolder.name.setText(contactHeader.getContactName());

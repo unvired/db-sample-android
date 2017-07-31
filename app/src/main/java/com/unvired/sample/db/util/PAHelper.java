@@ -1,6 +1,7 @@
 package com.unvired.sample.db.util;
 
 import com.unvired.exception.ApplicationException;
+import com.unvired.logger.Logger;
 import com.unvired.sample.db.be.CONTACT_HEADER;
 import com.unvired.sync.SyncConstants;
 import com.unvired.sync.SyncEngine;
@@ -20,9 +21,9 @@ public class PAHelper {
         try {
             SyncEngine.getInstance().submitInSyncMode(SyncConstants.MESSAGE_REQUEST_TYPE.RQST, header, "", Constants.PA_CREATE_CONTACT, true, callback);
         } catch (ApplicationException e) {
-            e.printStackTrace();
+            Logger.e(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.e(e.getMessage());
         }
     }
 
@@ -31,9 +32,9 @@ public class PAHelper {
         try {
             SyncEngine.getInstance().submitInSyncMode(SyncConstants.MESSAGE_REQUEST_TYPE.PULL, header, "", Constants.PA_GET_CONTACT, false, callback);
         } catch (ApplicationException e) {
-            e.printStackTrace();
+            Logger.e(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.e(e.getMessage());
         }
 
     }

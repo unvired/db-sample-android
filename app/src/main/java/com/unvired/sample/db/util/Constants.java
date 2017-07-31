@@ -6,7 +6,8 @@ package com.unvired.sample.db.util;
 
 public class Constants {
     // App Name
-    public static final String APPLICATION_NAME = "Unvired DB Sample";
+    public static final String APPLICATION_NAME = "UnviredDBSample";
+    public static final String APPLICATION_TITLE = "Unvired DB Sample";
 
     // BE Names
     public static final String BE_CONTACT = "CONTACT";

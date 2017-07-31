@@ -32,7 +32,6 @@ import java.util.List;
 
 public class StartUpActivity extends AppCompatActivity implements LoginListener {
 
-    private static final String CLASS_NAME = StartUpActivity.class.getName();
     private static final String URL = "https://sandbox.unvired.io/UMP";
 
     @Override
@@ -99,17 +98,19 @@ public class StartUpActivity extends AppCompatActivity implements LoginListener 
             InputStream inputStream = this.getResources().openRawResource(R.raw.metadata);
             metaDataXml = FrameworkHelper.getString(inputStream);
         } catch (ApplicationException e) {
-            Logger.log(Logger.LEVEL_ERROR, CLASS_NAME, "initializeFramework", "ApplicationException: " + e.getMessage());
+            Logger.e(e.getMessage());
         }
 
         LoginParameters.setUrl(URL);
-        LoginParameters.setAppTitle(getResources().getText(R.string.app_name).toString());
+        LoginParameters.setAppTitle(Constants.APPLICATION_TITLE);
+        LoginParameters.setAppName(Constants.APPLICATION_NAME);
         LoginParameters.setMetaDataXml(metaDataXml);
         LoginParameters.setLoginListener(this);
+        LoginParameters.setLoginTypes(new LoginParameters.LOGIN_TYPE[]{LOGIN_TYPE.UNVIRED_ID});
         LoginParameters.setDemoModeRequired(false);
-        LoginParameters.setContext(context);
         LoginParameters.showCompanyField(true);
-        LoginParameters.setAppName(Constants.APPLICATION_NAME);
+        LoginParameters.setContext(context);
+
         LoginParameters.setLoginTypes(new LOGIN_TYPE[]{LOGIN_TYPE.UNVIRED_ID});
 
         ApplicationVersion.setBUILD_NUMBER("1");
@@ -117,11 +118,11 @@ public class StartUpActivity extends AppCompatActivity implements LoginListener 
         try {
             AuthenticationService.login(this.getApplicationContext());
         } catch (ApplicationException e) {
-            Logger.log(Logger.LEVEL_ERROR, this.CLASS_NAME, "initializeFramework", e.getMessage());
+            Logger.e(e.getMessage());
         } catch (DBException e) {
-            Logger.log(Logger.LEVEL_ERROR, this.CLASS_NAME, "initializeFramework", e.getMessage());
+            Logger.e(e.getMessage());
         } catch (Exception e) {
-            Logger.log(Logger.LEVEL_ERROR, this.CLASS_NAME, "initializeFramework", "Exception caught: " + e.getMessage());
+            Logger.e(e.getMessage());
         }
 
         this.finish();
