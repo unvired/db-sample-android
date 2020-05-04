@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.unvired.database.DBException;
 import com.unvired.model.InfoMessage;
@@ -46,25 +47,39 @@ public class CreateContactActivity extends AppCompatActivity {
 		phone = (TextInputEditText) findViewById(R.id.phone);
 		email = (TextInputEditText) findViewById(R.id.email);
 		
-		AppCompatButton createButton = (AppCompatButton) findViewById(R.id.createButton);
+		final AppCompatButton createButton = (AppCompatButton) findViewById(R.id.createButton);
 		createButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if (isValid()) {
+
+				if(name.getText()==null || name.getText().toString().isEmpty()||name.getText().toString().equals("")){
+					Toast.makeText(getApplicationContext(),"Enter name",Toast.LENGTH_SHORT).show();
+				} else if(phone.getText()==null || phone.getText().toString().isEmpty()||phone.getText().toString().equals("")){
+					Toast.makeText(getApplicationContext(),"Enter phone",Toast.LENGTH_SHORT).show();
+				} else if(email.getText()==null || email.getText().toString().isEmpty()||email.getText().toString().equals("")){
+					Toast.makeText(getApplicationContext(),"Enter email",Toast.LENGTH_SHORT).show();
+				} else{
 					createContact();
 				}
+
+//				if (isValid()) {
+//					createContact();
+//				}
 			}
 		});
 	}
 	
 	private void createContact() {
 		try {
+
 			CONTACT_HEADER header = new CONTACT_HEADER();
+
 			header.setContactId(new Random().nextLong());
+
 			if (name.getText() != null && !name.getText().toString().isEmpty()) {
 				header.setContactName(name.getText().toString());
 			}
-			
+
 			if (phone.getText() != null && !phone.getText().toString().isEmpty()) {
 				header.setPhone(phone.getText().toString());
 			}
@@ -220,23 +235,23 @@ public class CreateContactActivity extends AppCompatActivity {
 				}).create().show();
 	}
 	
-	private boolean isValid() {
-		if (name.getText() == null || name.getText().toString().isEmpty()) {
-			((TextInputEditText) name.getParentForAccessibility()).setError("Name cannot be empty.");
-			return false;
-		}
-		
-		if (phone.getText() == null || phone.getText().toString().isEmpty()) {
-			((TextInputEditText) phone.getParentForAccessibility()).setError("Phone number cannot be empty.");
-			return false;
-		}
-		
-		if (email.getText() == null || email.getText().toString().isEmpty()) {
-			((TextInputEditText) email.getParentForAccessibility()).setError("Email cannot be empty.");
-			return false;
-		}
-		
-		return true;
-	}
+//	private boolean isValid() {
+//		if (name.getText() == null || name.getText().toString().isEmpty()) {
+//			((TextInputEditText) name.getParentForAccessibility()).setError("Name cannot be empty.");
+//			return false;
+//		}
+//
+//		if (phone.getText() == null || phone.getText().toString().isEmpty()) {
+//			((TextInputEditText) phone.getParentForAccessibility()).setError("Phone number cannot be empty.");
+//			return false;
+//		}
+//
+//		if (email.getText() == null || email.getText().toString().isEmpty()) {
+//			((TextInputEditText) email.getParentForAccessibility()).setError("Email cannot be empty.");
+//			return false;
+//		}
+//
+//		return true;
+//	}
 	
 }

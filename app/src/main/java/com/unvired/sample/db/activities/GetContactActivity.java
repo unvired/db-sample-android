@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.unvired.database.DBException;
 import com.unvired.database.IDataStructure;
@@ -78,7 +79,9 @@ public class GetContactActivity extends AppCompatActivity {
                         header.setContactName(name.getText().toString());
                     }
 
+
                     downloadContacts(header);
+
 
                 } catch (DBException e) {
                     e.printStackTrace();
